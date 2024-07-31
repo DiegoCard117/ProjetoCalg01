@@ -4,12 +4,28 @@ programa {
     inteiro skipPlayer1 = 0, skipPlayer2 = 0 // Flags para pular a vez do jogador
     inteiro totaldado1 = 0, totaldado2 = 0
     funcao inicio() {
-        escreva("-------------------------------------------------------------------------- \n")
+		string continuar
+        escreva("  _   _ ____  _____ ____    _____    _  _____ ____   __     ______\n")
+	    escreva(" | | | | __ )| ____|  _ \\  | ____|  / \\|_   _/ ___|  \\ \\   / / ___|\n")
+	    escreva(" | | | |  _ \\|  _| | |_) | |  _|   / _ \\ | | \\___ \\   \\ \\ / /\\___ \\ \n")
+	    escreva(" | |_| | |_) | |___|  _ <  | |___ / ___ \\| |  ___) |   \\ V /  ___) |\n")
+	    escreva("  \\___/|____/|_____|_| \\_\\_|_____/_/   \\_\\_| |____/     \\_/  |____/ \n")
+		
+	    escreva(" |_ _|___/ / _ \\ / _ \\|  _ \\ \n")
+	    escreva("   || |_  | | | | | | | | | |  \n")
+	    escreva("   ||  _| | |_| | |_| | |_| | \n")
+	    escreva(" |___|_|   \\___/ \\___/|____/\n")
+
+	    escreva("\n")
         escreva("Seja bem-vindo ao DeliveryMan \n")
-        escreva("Digite 1 para jogar \n")
+        escreva("1 - Jogar \n")
+        escreva("2 - Placar \n")
         escreva("Digite outro valor para fechar o jogo\n")
         leia(menuOpt)
+        limpa()
         se(menuOpt == "1") {
+        	escreva("Em um belo dia em Patrocinio...\n")
+            escreva("Um cliente teve a ideia de fazer um pedido")
             jogo()
         } senao {
             escreva("Jogo finalizado!!")
@@ -27,10 +43,11 @@ programa {
         inteiro optPlayer
         inteiro dado1, dado2
         
-        para(inteiro i = 0; i < 20; i++) {
+        para(inteiro i = 0; i < 20; i++) { //enchendo todas as posiçoes do array com 0
             player1[i] = 0
             player2[i] = 0
         }
+
         escreva("-------------------------------------------------------------------------- \n")
         escreva("Para escolher o personagem, cada jogador jogará o dado uma vez\n")
         escreva("Jogador 1, digite 1 para rodar o dado ou outra coisa para pular: " )
@@ -126,7 +143,7 @@ programa {
                     se(totaldado1 >= 20) {
                         totaldado1 = 20 // limita ao tamanho do array
                     }
-                    totaldado1 = aplicaCondicao(totaldado1, 1) // Aplica condição especial
+                    totaldado1 = aplicaCondicao(totaldado1, 1) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
                     player1[totaldado1] = 1
                     se(totaldado1 >= 19) {
                         winner = 1
@@ -160,7 +177,7 @@ programa {
                     se(totaldado2 >= 20) {
                         totaldado2 = 20 // limita ao tamanho do array
                     }
-                    totaldado2 = aplicaCondicao(totaldado2, 2) // Aplica condição especial
+                    totaldado2 = aplicaCondicao(totaldado2, 2) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
                     player2[totaldado2] = 1
                     se(totaldado2 >= 19) {
                         winner = 2
@@ -181,15 +198,18 @@ programa {
         escreva("-------------------------------------------------------------------------- \n")
         escreva("Fim de jogo, o jogador ", winner, " ganhou")
     }
-    
+    // funcao para aplicar as condicoes de cada casa
     funcao inteiro aplicaCondicao(inteiro posicao, inteiro jogador) {
         // Define as condições especiais
+        cadeia placebo
         se(posicao == 2) {
             escreva("Você caiu na casa 2! Vá para a casa 5.\n")
             retorne 5
         }
         se(posicao == 3) {
             escreva("Você caiu na casa 3! Jogue um dado adicional de 3 lados.\n")
+            escreva("Digite algo para jogar o dado")
+            leia(placebo)
             inteiro dadoExtra = u.sorteia(1, 3)
             posicao = posicao + dadoExtra
             escreva("Dado adicional tirou: ", dadoExtra, "\n")
@@ -239,9 +259,9 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 835; 
+ * @POSICAO-CURSOR = 1235; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {player1, 20, 16, 7}-{player2, 20, 29, 7};
+ * @SIMBOLOS-INSPECIONADOS = {player1, 35, 16, 7}-{player2, 35, 29, 7};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
