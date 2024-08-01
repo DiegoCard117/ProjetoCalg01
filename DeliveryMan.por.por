@@ -3,6 +3,7 @@ programa {
     cadeia menuOpt
     inteiro skipPlayer=0, i=1 // Flags para pular a vez do jogador
     inteiro totaldado1 = 1, totaldado2 = 1
+    inteiro player1[21], player2[21] //Vetores que marcarão as posições
     funcao inicio() {
         escreva("  _   _ ____  _____ ____    _____    _  _____ ____   __     ______\n")
 	    escreva(" | | | | __ )| ____|  _ \\  | ____|  / \\|_   _/ ___|  \\ \\   / / ___|\n")
@@ -33,14 +34,13 @@ programa {
 		        	
         }
         senao {
-            escreva("Jogo finalizado!!")
+            escreva("\nJogo finalizado!!")
         	  i++
         }
    	}
    }
     
     funcao jogo() {
-        inteiro player1[21], player2[21]
         cadeia playerN1 = "Ifood", playerN2 = "UberEats"
         inteiro winner = 1
         inteiro switch = 1 // flag para ligar e desligar todo o looping aonde o jogo acontece
@@ -61,7 +61,7 @@ programa {
         escreva ("Vocês agora são entregadores, onde tempo é dinheiro.\nSejam rápidos e aproveitem as oportunidades!\nO jogador que chegar primeiro à posição 20, ponto de entrega da encomenda, vence o jogo.\n")
         enquanto(personagem==0){
 			escreva("Para escolher os personagens, Ifood ou UberEats, cada jogador lançará o dado uma vez.\nQuem obter o maior número escolhe o personagem e começa jogando.\n")
-        		escreva("Jogador 1, digite 1 para jogar o dado ou outro valor para passar a vez para o Jogador 2: " )
+        		escreva("\nJogador 1, digite 1 para jogar o dado ou outro valor para passar a vez para o Jogador 2: " )
 			leia(choice)
 			
 			se(choice==1){
@@ -69,7 +69,7 @@ programa {
 				escreva("\nSeu resultador foi: ", jogador1)
 			}senao{
 				skipPlayer=2//define quem começa jogando após a escolha dos personagens
-				escreva ("\n O Jogador 1 optou por deixar você começar jogando e escolher seu personagem. Aproveite!")
+				escreva ("\nO Jogador 1 optou por deixar você começar jogando e escolher seu personagem. Aproveite!")
 				escreva ("\nJogador 2, pressione 1 para escolher Ifood, 2 para escolher UberEats ou qualquer outro valor para escolha aleatória: ")
 				leia (p)
 				enquanto (c==0){
@@ -104,7 +104,7 @@ programa {
 
 			se(choice!=1 e personagem==0){
 				skipPlayer=1
-				escreva ("\n O Jogador 2 optou por deixar você jogar primeiro e escolher seu personagem. Aproveite!")
+				escreva ("\nO Jogador 2 optou por deixar você jogar primeiro e escolher seu personagem. Aproveite!")
 				escreva ("\nJogador 1, pressione 1 para escolher Ifood, 2 para escolher UberEats ou qualquer outro valor para escolha aleatória: ")
 				leia (p)
 				enquanto (c==0){
@@ -187,13 +187,11 @@ programa {
         escreva("O Jogador ",skipPlayer ," começará\n")
         
         enquanto(switch == 1) {
- 
             se (skipPlayer== 1){
-                //Jogador1
-               escreva("-------------------------------------------------------------------------- \n")
-               escreva("Jogador ", skipPlayer ," digite '1' para jogar, '2' para ver o placar ou outro valor para desistir: ")
-               leia(optPlayer)
-               
+                //Jogador1         
+                escreva("-------------------------------------------------------------------------- \n")
+                escreva("Jogador ", skipPlayer ," digite '1' para jogar, '2' para ver a posição atual ou outro valor para desistir: ")
+                leia(optPlayer)      
                 se(optPlayer == 1){
                     se(totaldado1 < 20) {
                         player1[totaldado1] = 0 // Zera a posição anterior
@@ -212,13 +210,30 @@ programa {
                         pare
                     }
                     skipPlayer=2
-                } senao se (optPlayer == 2) {
+                } senao se (optPlayer == 2){
                     escreva("Posição atual: Jogador 1 - ", totaldado1, " | Jogador 2 - ", totaldado2, "\n")
                     escreva("Jogador ", skipPlayer ," digite '1' para jogar ou outro valor para desistir: ")
                	leia(optPlayer)
-                } senao {
+               	se(totaldado1 < 20) {
+                        player1[totaldado1] = 0 // Zera a posição anterior
+                    }
+                    dado1 = u.sorteia(1, 6)
                     escreva("-------------------------------------------------------------------------- \n")
-                    escreva("Jogo finalizado, jogador 2 ganhou pois o jogador 1 desistiu")
+                    escreva("O jogador 1 tirou: ", dado1, "\n")
+                    totaldado1 = totaldado1 + dado1
+                    se(totaldado1 >20){
+                        totaldado1 = 20 // limita ao tamanho do array não deixando passar de 20
+                    }
+                    totaldado1 = aplicaCondicao(totaldado1, 1) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
+                    player1[totaldado1] = 1
+                    se(totaldado1 == 20) {
+                        winner = 1 //casa do vencedor
+                        pare
+                    }
+               	 skipPlayer=2
+                }senao {
+                    escreva("-------------------------------------------------------------------------- \n")
+                    escreva("O Jogador 2 ganhou pois o jogador 1 desistiu")
                     player2 [20]=1 //Ativa a vitória do jogador 2
                     winner = 2
                     pare
@@ -227,9 +242,31 @@ programa {
             // Jogador 2
             se (skipPlayer== 2){
             	escreva("-------------------------------------------------------------------------- \n")
-               escreva("Jogador ", skipPlayer ," digite '1' para jogar, '2' para ver o placar ou outro valor para desistir: ")
+               escreva("Jogador ", skipPlayer ," digite '1' para jogar, '2' para ver a posição atual ou outro valor para desistir: ")
                leia(optPlayer)
-               se(optPlayer == 1) {
+               se(optPlayer == 1){
+                    se(totaldado2 < 20){
+                        player2[totaldado2] = 0 // Zera a posição anterior
+                    }
+                    dado2 = u.sorteia(1, 6)
+                    escreva("-------------------------------------------------------------------------- \n")
+                    escreva("O jogador 2 tirou: ", dado2, "\n")
+                    totaldado2 = totaldado2 + dado2
+                    se(totaldado2 > 20){
+                        totaldado2 = 20 // limita ao tamanho do array
+                    }
+                    totaldado2 = aplicaCondicao(totaldado2, 2) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
+                    player2[totaldado2] = 1
+                    se(totaldado2 == 20) {
+                        winner = 2
+                        pare
+                    }
+                    skipPlayer=1
+                }senao se (optPlayer == 2){
+                    escreva("Placar: Jogador 1 - ", totaldado1, " | Jogador 2 - ", totaldado2, "\n") //mostra as posições atuais
+                    escreva("Jogador 2 - digite '1' para jogar ou outro valor para desistir: ") //Volta na opção de escolha
+               	leia(optPlayer)
+               	se(optPlayer == 1){
                     se(totaldado2 < 20) {
                         player2[totaldado2] = 0 // Zera a posição anterior
                     }
@@ -247,21 +284,21 @@ programa {
                         pare
                     }
                     skipPlayer=1
-                } senao se (optPlayer == 2) {
-                    escreva("Placar: Jogador 1 - ", totaldado1, " | Jogador 2 - ", totaldado2, "\n") //mostra as posições atuais
-                    escreva("Jogador 2 - digite '1' para jogar ou outro valor para desistir: ") //Volta na opção de escolha
-               	 leia(optPlayer)
-                } senao {
+                }senao{
+                    escreva("-------------------------------------------------------------------------- \n")
+                    escreva("o Jogador 1 ganhou pois o jogador 2 desistiu")
+                    winner = 1
+                    pare
+                }
+            	}senao{
                     escreva("-------------------------------------------------------------------------- \n")
                     escreva("Jogo finalizado, jogador 1 ganhou pois o jogador 2 desistiu")
                     winner = 1
                     pare
-                }
-            } 
-        }
-        escreva("-------------------------------------------------------------------------- \n")
-        escreva("Fim de jogo, o jogador ", winner, " ganhou")
-    	}
+            	}
+       	}
+   	}
+  }
     //funcao para aplicar as condicoes de cada casa
     funcao inteiro aplicaCondicao(inteiro posicao, inteiro jogador) {
         // Define as condições especiais
@@ -280,18 +317,18 @@ programa {
         }
         se(posicao == 7) {
             escreva("Você caiu na casa 7! Você não jogará na próxima rodada.\n")
-            se (skipPlayer == 1){
-                skipPlayer=2
-          }senao{
+            se(jogador == 1) {
+                skipPlayer = 2
+            } senao {
                 skipPlayer = 1
-          }
+               
+            }
         }
         se(posicao == 10) {
             escreva("Você caiu na casa 10! Os jogadores trocarão de lugar.\n")
-            inteiro temp = totaldado1
-            totaldado1 = totaldado2
-            totaldado2 = temp
-            escreva("Jogador 1 está agora na casa ", totaldado1, " e Jogador 2 está agora na casa ", totaldado2, "\n")
+           player2 [totaldado1]=1
+           player1 [totaldado2]=1
+           escreva("Jogador 1 está agora na casa ", totaldado2, " e Jogador 2 está agora na casa ", totaldado1, "\n")
         }
         se(posicao == 12) {
             escreva("Você caiu na casa 12! Volte uma casa.\n")
@@ -323,9 +360,9 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 9441; 
+ * @POSICAO-CURSOR = 14488; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {player1, 43, 16, 7}-{player2, 43, 29, 7};
+ * @SIMBOLOS-INSPECIONADOS = {player1, 6, 12, 7}-{player2, 6, 25, 7};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
