@@ -46,17 +46,17 @@ programa {
         			inteiro partida= s.carregar_som("Motorcycle.mp3")
     				s.reproduzir_som(partida, falso)
     				s.definir_volume_reproducao(partida, 70)
-          		jogo() //jogo comeca
-          		i++
+          			jogo() //jogo comeca
+          			i++
         		}
         		se(menuOpt== "2"){
         			escreva ("Mostrar placar\n") 
         			s.reproduzir_som(placar, falso)
         			s.definir_volume_reproducao(placar, 100)
         		} senao {
-            		escreva("\nJogo finalizado!!")
-            		s.reproduzir_som(desistiu, falso)
-            		s.definir_volume_reproducao(desistiu, 100)
+            			escreva("\nJogo finalizado!!")
+            			s.reproduzir_som(desistiu, falso)
+            			s.definir_volume_reproducao(desistiu, 100)
         	  		i++
         		}
    		}
@@ -75,8 +75,8 @@ programa {
         	inteiro passa= s.carregar_som("passaavez.mp3")
         
         	para(inteiro contador= 0; contador < 20; contador++) { //enchendo todas as posiçoes do array com 0
-          	player1[i] = 0
-            	player2[i] = 0
+          		player1[i] = 0
+            		player2[i] = 0
         	}
         	player1 [1]=1 //"Dois jogadores estarão na posição 1 do tabuleiro, sem qualquer benefício ou penalidade".
         	player2 [1]=1//"Dois jogadores estarão na posição 1 do tabuleiro, sem qualquer benefício ou penalidade."
@@ -236,135 +236,135 @@ programa {
 			}
          	}
 							//FIM DA ESCOLHA DOS PERSONAGENS
-			escreva("\n", playerN1, " X ", playerN2, "\n")
-        		escreva("-------------------------------------------------------------------------- \n")
-        		escreva("O Jogador ",skipPlayer ," começará\n")
+		escreva("\n", playerN1, " X ", playerN2, "\n")
+        	escreva("-------------------------------------------------------------------------- \n")
+        	escreva("O Jogador ",skipPlayer ," começará\n")
         
 		enquanto(switch == 1) {
         		se(skipPlayer== 1){
                 //Jogador1         
               		escreva("-------------------------------------------------------------------------- \n")
-               	escreva("Jogador ", skipPlayer ," digite '1' para jogar, '2' para ver a posição atual ou outro valor para desistir: ")
-               	leia(optPlayer)      
+               		escreva("Jogador ", skipPlayer ," digite '1' para jogar, '2' para ver a posição atual ou outro valor para desistir: ")
+               		leia(optPlayer)      
               	 	se(optPlayer == 1){
-               		s.reproduzir_som(somdado, falso)
+               			s.reproduzir_som(somdado, falso)
 					s.definir_volume_reproducao(somdado, 100)
-                    	se(totaldado1 < 20) {
+                    		se(totaldado1 < 20) {
                         		player1[totaldado1] = 0 // Zera a posição anterior
-                    	}
-                    	dado1 = u.sorteia(1, 6)
-                    	escreva("-------------------------------------------------------------------------- \n")
-                    	escreva("O jogador 1 tirou: ", dado1, "\n")
-                    	totaldado1 = totaldado1 + dado1
-                    	se(totaldado1 >20){
+                    		}
+                    		dado1 = u.sorteia(1, 6)
+                    		escreva("-------------------------------------------------------------------------- \n")
+                    		escreva("O jogador 1 tirou: ", dado1, "\n")
+                    		totaldado1 = totaldado1 + dado1
+                    		se(totaldado1 >20){
                         		totaldado1 = 20 // limita ao tamanho do array não deixando passar de 20
-                    	}
-                    	totaldado1 = aplicaCondicao(totaldado1, 1) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
-                    	player1[totaldado1] = 1
-                    	se(totaldado1 == 20) {
+                    		}
+                    		totaldado1 = aplicaCondicao(totaldado1, 1) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
+                    		player1[totaldado1] = 1
+                    		se(totaldado1 == 20) {
                         		winner = 1 //casa do vencedor
                         		pare
-                    	}
-                    	skipPlayer=2
+                    		}
+                    		skipPlayer=2
                 	} senao se (optPlayer == 2){
-                    	escreva("Posição atual: Jogador 1 - ", totaldado1, " | Jogador 2 - ", totaldado2, "\n")
-                    	s.reproduzir_som(placar, falso)
-                    	s.definir_volume_reproducao(placar, 100)
-                    	escreva("Jogador ", skipPlayer ," digite '1' para jogar ou outro valor para desistir: ")
-               		leia(optPlayer)
-               		se(totaldado1 < 20) {
+                    		escreva("Posição atual: Jogador 1 - ", totaldado1, " | Jogador 2 - ", totaldado2, "\n")
+                    		s.reproduzir_som(placar, falso)
+                    		s.definir_volume_reproducao(placar, 100)
+                    		escreva("Jogador ", skipPlayer ," digite '1' para jogar ou outro valor para desistir: ")
+               			leia(optPlayer)
+               			se(totaldado1 < 20) {
                         		player1[totaldado1] = 0 // Zera a posição anterior
-                    	}
-                    	dado1 = u.sorteia(1, 6)
-                    	escreva("-------------------------------------------------------------------------- \n")
-                    	escreva("O jogador 1 tirou: ", dado1, "\n")
-                    	totaldado1 = totaldado1 + dado1
-                    	se(totaldado1 >20){
+                    		}
+                    		dado1 = u.sorteia(1, 6)
+                    		escreva("-------------------------------------------------------------------------- \n")
+                    		escreva("O jogador 1 tirou: ", dado1, "\n")
+                    		totaldado1 = totaldado1 + dado1
+                    		se(totaldado1 >20){
                         		totaldado1 = 20 // limita ao tamanho do array não deixando passar de 20
-                    	}
-                    	totaldado1 = aplicaCondicao(totaldado1, 1) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
-                    	player1[totaldado1] = 1
-                    	se(totaldado1 == 20) {
+                    		}
+                    		totaldado1 = aplicaCondicao(totaldado1, 1) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
+                    		player1[totaldado1] = 1
+                    		se(totaldado1 == 20) {
                         		winner = 1 //casa do vencedor
                         		pare
-                    	}
-               	 	skipPlayer=2
+                    		}
+               	 		skipPlayer=2
                 		
                 	} senao {
-                    	escreva("-------------------------------------------------------------------------- \n")
-                    	escreva("O Jogador 2 ganhou pois o jogador 1 desistiu")
-                    	s.reproduzir_som(desistiu, falso)
-                    	s.definir_volume_reproducao(desistiu, 100)
-                    	player2 [20]=1 //Ativa a vitória do jogador 2
-                    	winner = 2
-                    	pare
+                    		escreva("-------------------------------------------------------------------------- \n")
+                    		escreva("O Jogador 2 ganhou pois o jogador 1 desistiu")
+                    		s.reproduzir_som(desistiu, falso)
+                    		s.definir_volume_reproducao(desistiu, 100)
+                    		player2 [20]=1 //Ativa a vitória do jogador 2
+                    		winner = 2
+                    		pare
                 	}
             	} 
             // Jogador 2
 			se(skipPlayer== 2){
 				escreva("-------------------------------------------------------------------------- \n")
-               	escreva("Jogador ", skipPlayer ," digite '1' para jogar, '2' para ver a posição atual ou outro valor para desistir: ")
-               	leia(optPlayer)
-               	se(optPlayer == 1){
-               		s.reproduzir_som(somdado, falso)
+               			escreva("Jogador ", skipPlayer ," digite '1' para jogar, '2' para ver a posição atual ou outro valor para desistir: ")
+               			leia(optPlayer)
+               			se(optPlayer == 1){
+               				s.reproduzir_som(somdado, falso)
 					s.definir_volume_reproducao(somdado, 100)
-                    	se(totaldado2 < 20){
-                        		player2[totaldado2] = 0 // Zera a posição anterior
-                    	}
-                    	dado2 = u.sorteia(1, 6)
-                    	escreva("-------------------------------------------------------------------------- \n")
-                    	escreva("O jogador 2 tirou: ", dado2, "\n")
-                    	totaldado2 = totaldado2 + dado2
-                    	se(totaldado2 > 20){
-                        		totaldado2 = 20 // limita ao tamanho do array
-                    	}
-                    	totaldado2 = aplicaCondicao(totaldado2, 2) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
-                    	player2[totaldado2] = 1
-                    	se(totaldado2 == 20) {
-                        		winner = 2
-                        		pare
-                    	}
-                    	skipPlayer=1
-                	}senao se (optPlayer == 2){
-                    	escreva("Placar: Jogador 1 - ", totaldado1, " | Jogador 2 - ", totaldado2, "\n") //mostra as posições atuais
-                    	s.reproduzir_som(placar, falso)
-                    	s.definir_volume_reproducao(placar, 100)
-                    	escreva("Jogador 2 - digite '1' para jogar ou outro valor para desistir: ") //Volta na opção de escolha
-               		leia(optPlayer)
-               		se(optPlayer == 1){
-               			s.reproduzir_som(somdado, falso)
-						s.definir_volume_reproducao(somdado, 100)
-                    		se(totaldado2 < 20) {
+                    			se(totaldado2 < 20){
                         			player2[totaldado2] = 0 // Zera a posição anterior
-                    		}
-                    		dado2 = u.sorteia(1, 6)
-                    		escreva("-------------------------------------------------------------------------- \n")
-                    		escreva("O jogador 2 tirou: ", dado2, "\n")
-                    		totaldado2 = totaldado2 + dado2
-                    		se(totaldado2 > 20){
+                    			}
+                    			dado2 = u.sorteia(1, 6)
+                    			escreva("-------------------------------------------------------------------------- \n")
+                    			escreva("O jogador 2 tirou: ", dado2, "\n")
+                    			totaldado2 = totaldado2 + dado2
+                    			se(totaldado2 > 20){
                         			totaldado2 = 20 // limita ao tamanho do array
-                    		}
-                    		totaldado2 = aplicaCondicao(totaldado2, 2) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
-                    		player2[totaldado2] = 1
-                    		se(totaldado2 == 20) {
+                    			}
+                    			totaldado2 = aplicaCondicao(totaldado2, 2) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
+                    			player2[totaldado2] = 1
+                    			se(totaldado2 == 20) {
                         			winner = 2
                         			pare
-                    		}
-                    		skipPlayer=1
-                		}senao{
-                    		escreva("-------------------------------------------------------------------------- \n")
-                    		escreva("o Jogador 1 ganhou pois o jogador 2 desistiu")
-                    		s.reproduzir_som(desistiu, falso)
-                    		winner = 1
-                    		pare
-                		}
-            		}senao{
-                    	escreva("-------------------------------------------------------------------------- \n")
-                    	escreva("Jogo finalizado, jogador 1 ganhou pois o jogador 2 desistiu")
-                    	winner = 1
-                    	pare
-            		}
-       		}
+                    			}
+                    			skipPlayer=1
+                		}senao se (optPlayer == 2){
+                    			escreva("Placar: Jogador 1 - ", totaldado1, " | Jogador 2 - ", totaldado2, "\n") //mostra as posições atuais
+                    			s.reproduzir_som(placar, falso)
+                    			s.definir_volume_reproducao(placar, 100)
+                    			escreva("Jogador 2 - digite '1' para jogar ou outro valor para desistir: ") //Volta na opção de escolha
+               				leia(optPlayer)
+               				se(optPlayer == 1){
+               					s.reproduzir_som(somdado, falso)
+						s.definir_volume_reproducao(somdado, 100)
+                    				se(totaldado2 < 20) {
+                        				player2[totaldado2] = 0 // Zera a posição anterior
+                    				}
+                    				dado2 = u.sorteia(1, 6)
+                    				escreva("-------------------------------------------------------------------------- \n")
+                    				escreva("O jogador 2 tirou: ", dado2, "\n")
+                    				totaldado2 = totaldado2 + dado2
+                    				se(totaldado2 > 20){
+                        				totaldado2 = 20 // limita ao tamanho do array
+                    				}
+                    				totaldado2 = aplicaCondicao(totaldado2, 2) // chama a funçao para ver qual a casa, se houver uma casa especial ele executa a açao
+                    				player2[totaldado2] = 1
+                    				se(totaldado2 == 20) {
+                        				winner = 2
+                        				pare
+                    				}
+                    				skipPlayer=1
+                			}senao{
+                    				escreva("-------------------------------------------------------------------------- \n")
+                    				escreva("o Jogador 1 ganhou pois o jogador 2 desistiu")
+                    				s.reproduzir_som(desistiu, falso)
+                    				winner = 1
+                    				pare
+                			}
+            			}senao{
+                    			escreva("-------------------------------------------------------------------------- \n")
+                    			escreva("Jogo finalizado, jogador 1 ganhou pois o jogador 2 desistiu")
+                    			winner = 1
+                    			pare
+            			}
+       			}
    		}
 	}
     //funcao para aplicar as condicoes de cada casa
@@ -382,74 +382,73 @@ programa {
     	   	inteiro campeao= s.carregar_som("campeao.mp3")
     	   	inteiro trilhasonora= s.carregar_som("trilhasonora.mp3")
         	se(posicao == 2) {
-            	escreva("Casa 2: Você furou o sinal vermelho, fugiu da polícia e encontrou um atalho. Acelere até a casa 5!\n")
-            	s.reproduzir_som(sirene, falso)
-            	retorne 5 
+            		escreva("Casa 2: Você furou o sinal vermelho, fugiu da polícia e encontrou um atalho. Acelere até a casa 5!\n")
+            		s.reproduzir_som(sirene, falso)
+            		retorne 5 
         	}
         	se(posicao == 3) {
-            	escreva("Casa 3: Um pedido urgente chegou! Lance um dado de 3 lados para acelerar a entrega.\n")
-            	s.reproduzir_som(telefone, falso)
-            	escreva("Digite algo para jogar o dado")
-            	s.definir_volume_reproducao(telefone, 80)
-            	leia(continuar)
-            	s.reproduzir_som(somdado, falso)
+            		escreva("Casa 3: Um pedido urgente chegou! Lance um dado de 3 lados para acelerar a entrega.\n")
+            		s.reproduzir_som(telefone, falso)
+            		escreva("Digite algo para jogar o dado")
+            		s.definir_volume_reproducao(telefone, 80)
+            		leia(continuar)
+            		s.reproduzir_som(somdado, falso)
 		  	s.definir_volume_reproducao(somdado, 100)
-            	inteiro dadoExtra = u.sorteia(1, 3)
-            	posicao = posicao + dadoExtra
-            	escreva("Dado adicional tirou: ", dadoExtra, "\n")
+            		inteiro dadoExtra = u.sorteia(1, 3)
+            		posicao = posicao + dadoExtra
+            		escreva("Dado adicional tirou: ", dadoExtra, "\n")
         	}
         	se(posicao == 7) {
-            	escreva("Casa 7: Seu pneu furou! Procure um borracheiro para trocar o pneu e espere a próxima rodada.\n")
-            	s.reproduzir_som(pitstop, falso)
-            	se(jogador == 1) {
-                	skipPlayer = 2
-            	} senao {
-                	skipPlayer = 1
-               
-            	}
+            		escreva("Casa 7: Seu pneu furou! Procure um borracheiro para trocar o pneu e espere a próxima rodada.\n")
+            		s.reproduzir_som(pitstop, falso)
+            		se(jogador == 1) {
+                		skipPlayer = 2
+            		} senao {
+                		skipPlayer = 1
+            		}
         	}
         	se(posicao == 10) {
-           	escreva("Casa 10: Os clientes trocaram os endereços! Os jogadores devem trocar de posição para corrigir as entregas.\n")
-           	s.reproduzir_som(troca, falso)
-           	s.definir_volume_reproducao(troca, 100)
-           	player2 [totaldado1]=1
-           	player1 [totaldado2]=1
-           	escreva("Jogador 1 está agora na casa ", totaldado2, " e Jogador 2 está agora na casa ", totaldado1, "\n")
+           		escreva("Casa 10: Os clientes trocaram os endereços! Os jogadores devem trocar de posição para corrigir as entregas.\n")
+           		s.reproduzir_som(troca, falso)
+           		s.definir_volume_reproducao(troca, 100)
+           		player2 [totaldado1]=1
+           		player1 [totaldado2]=1
+           		escreva("Jogador 1 está agora na casa ", totaldado2, " e Jogador 2 está agora na casa ", totaldado1, "\n")
         	}
         	se(posicao == 12) {
-            	escreva("Casa 12: A gasolina está acabando! Volte à casa anterior para reabastecer no posto Ipiranga e espere a próxima rodada.\n")
-            	s.reproduzir_som(abastecer, falso)
-            	s.definir_volume_reproducao(abastecer, 100)
-            	posicao = posicao - 1
+            		escreva("Casa 12: A gasolina está acabando! Volte à casa anterior para reabastecer no posto Ipiranga e espere a próxima rodada.\n")
+            		s.reproduzir_som(abastecer, falso)
+            		s.definir_volume_reproducao(abastecer, 100)
+            		posicao = posicao - 1
         	}
         	se(posicao == 15) {
-            	escreva("É o show de talentos sertanejos da comunidade! Cante Evidências e avance, ou opte por mudar a rota voltando duas casas.\n")
-            	cadeia resposta
-           	escreva("\nDigite '1' se quiser cantar, qualquer outra coisa para voltar 2 casas: ")
-            	leia(resposta)
-            	se(resposta == "1") {
-            		s.reproduzir_som(evidencias, falso)
-            		s.definir_volume_reproducao(evidencias, 100)
-               	escreva ("\nE nessa loucura de dizer que não te quero\nVou negando as aparências\nDisfarçando as evidências\nMas pra que viver fingindo\nSe eu não posso enganar meu coração?\nEu sei que te amo!")
-               	escreva ("\nChega de mentiras\nDe negar o meu desejo\nEu te quero mais que tudo\nEu preciso do seu beijo\nEu entrego a minha vida\nPra você fazer o que quiser de mim\nSó quero ouvir você dizer que sim!")
-            	}senao{
-            		escreva("Você escolheu não cantar. Volte 2 casas.\n")
-            		s.reproduzir_som(voltar, falso)
-            		s.definir_volume_reproducao(voltar, 100)
-            		posicao = posicao - 2
-            	}
+            		escreva("É o show de talentos sertanejos da comunidade! Cante Evidências e avance, ou opte por mudar a rota voltando duas casas.\n")
+            		cadeia resposta
+           		escreva("\nDigite '1' se quiser cantar, qualquer outra coisa para voltar 2 casas: ")
+            		leia(resposta)
+            		se(resposta == "1") {
+            			s.reproduzir_som(evidencias, falso)
+            			s.definir_volume_reproducao(evidencias, 100)
+               			escreva ("\nE nessa loucura de dizer que não te quero\nVou negando as aparências\nDisfarçando as evidências\nMas pra que viver fingindo\nSe eu não posso enganar meu coração?\nEu sei que te amo!")
+               			escreva ("\nChega de mentiras\nDe negar o meu desejo\nEu te quero mais que tudo\nEu preciso do seu beijo\nEu entrego a minha vida\nPra você fazer o que quiser de mim\nSó quero ouvir você dizer que sim!")
+            		}senao{
+            			escreva("Você escolheu não cantar. Volte 2 casas.\n")
+            			s.reproduzir_som(voltar, falso)
+            			s.definir_volume_reproducao(voltar, 100)
+            			posicao = posicao - 2
+            		}
         	}
         	se(posicao == 19) {
-            	escreva("Casa 19: Você quase chegou ao destino, mas esqueceu a máquina de cartão! Volte para a casa 1 para buscá-la.\n")
-            	s.reproduzir_som(voltar, falso)
-            	s.definir_volume_reproducao(voltar, 100)
-            	retorne 1
+            		escreva("Casa 19: Você quase chegou ao destino, mas esqueceu a máquina de cartão! Volte para a casa 1 para buscá-la.\n")
+            		s.reproduzir_som(voltar, falso)
+            		s.definir_volume_reproducao(voltar, 100)
+            		retorne 1
         	}
         	se(posicao == 20) {
-            	escreva("Casa 20:Bom trabalho, entregador! Você chegou ao destino e concluiu a entrega. Você soma +1 ponto no placar.!\n")
-            	s.reproduzir_som(campeao, falso)
-            	s.definir_volume_reproducao(campeao, 100)
-            	s.definir_volume_reproducao(trilhasonora, 100)
+            		escreva("Casa 20:Bom trabalho, entregador! Você chegou ao destino e concluiu a entrega. Você soma +1 ponto no placar.!\n")
+            		s.reproduzir_som(campeao, falso)
+            		s.definir_volume_reproducao(campeao, 100)
+            		s.definir_volume_reproducao(trilhasonora, 100)
         	}
         	retorne posicao
 	}
