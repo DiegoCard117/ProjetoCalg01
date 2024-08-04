@@ -17,7 +17,7 @@ Vence quem chegar primeiro à posição final do tabuleiro.
 Sons e trilhas sonoras imersivas para uma melhor experiência de jogo.
 
 Feito com ❤️ por:
-Diego Cardoso
-Diego Chagas
-Douglas Miqueias
+Diego Cardoso,
+Diego Chagas,
+Douglas Miqueias,
 Natan
