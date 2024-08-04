@@ -7,7 +7,11 @@ Bem-vindo ao Delivery Man, um emocionante jogo de tabuleiro onde você assume o 
 Funcionalidades
 
 Escolha entre dois personagens: Ifood ou UberEats.
+
 Jogue dados para avançar pelo tabuleiro.
+
 Enfrente condições especiais que podem avançar ou retroceder sua posição.
+
 Vence quem chegar primeiro à posição final do tabuleiro.
+
 Sons e trilhas sonoras imersivas para uma melhor experiência de jogo.
