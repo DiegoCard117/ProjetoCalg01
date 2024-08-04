@@ -4,7 +4,8 @@ Bem-vindo ao Delivery Man, um emocionante jogo de tabuleiro onde você assume o 
 
 À medida que aceleram seus motores e rolam os dados, a paisagem urbana se torna seu campo de batalha. Cada rolar de dados traz novos desafios e oportunidades ao longo do caminho!
 
-*Funcionalidades*
+Funcionalidades
+
 Escolha entre dois personagens: Ifood ou UberEats.
 Jogue dados para avançar pelo tabuleiro.
 Enfrente condições especiais que podem avançar ou retroceder sua posição.
