@@ -18,6 +18,6 @@ Sons e trilhas sonoras imersivas para uma melhor experiência de jogo.
 
 Feito com ❤️ por:
 Diego Cardoso,
-Diego Chagas,
+Diego Jose,
 Douglas Miqueias,
 Natan
