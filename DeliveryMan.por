@@ -33,7 +33,7 @@ programa {
 
 	   	escreva("\n")
 	   	enquanto (i==1){
-	   		para(inteiro resetar = 0; i<= 20; i++) {
+	   		para(inteiro resetar = 0; resetar <= 20; resetar++) {
                		player1[resetar] = 0
                		player2[resetar] = 0
           	}
@@ -45,9 +45,9 @@ programa {
         		escreva ("Vocês são entregadores dedicados, prontos para enfrentar sinais vermelhos, pneus furados, clientes confusos e até shows de talentos!\nCada jogada traz uma nova aventura, desde encontrar atalhos secretos até trocar de posição com outros entregadores.\n")
         		escreva("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- \n")
         		escreva ("Então, afivelem seus capacetes, liguem o GPS e preparem-se para a corrida de entregas mais empolgante de todas. O primeiro a chegar ao destino final vence, mas cada entrega concluída é uma vitória.\nProntos para começar? Vamos lá, entregadores! O destino final espera por vocês!\n")
-        		escreva("Digite 1 para pular... ")
+        		escreva("Digite algo para pular... ")
         		leia(continuar)
-        		se(continuar == "1") {
+        		se(continuar != "textoImpossivel") {
         			tempo = 0
         			s.interromper_som(intro)
         		}
@@ -80,11 +80,27 @@ programa {
           				totaldado1 = 0
           				totaldado2 = 0
           				jogo()
-          				escreva("\nDeseja jogar novamente? 4- sim, 2- nao\n")
+          				escreva("\nDeseja jogar novamente? 4-sim, 5-placar, 6-fechar\n")
           				leia(continuar)
-          				se(continuar != "4"){
-          					escreva("Obrigado por jogar")
+          				se(continuar == "4") {
+          					jogo()
+          				} senao se(continuar == "5") {
+          					escreva("O placar é:\n")
+          					escreva("Jogador 1: ", vencedor1, " Vitoria(s)")
+          					escreva("\nJogador 2: ", vencedor2, " Vitoria(s)")
+          					escreva("\nDeseja jogar novamente? 1- sim, 2- nao\n")
+          					leia(continuar)
+          					se(continuar == "4") {
+          						inicio()
+          					} senao {
+          						escreva("Obrigado Por Jogar!!")
+          						escreva("\nJogo finalizado!!")
+          					}
+          				} senao {
+          					escreva("Obrigado Por Jogar!!")
+          					escreva("\nJogo finalizado!!")
           				}
+          				
           			}
           		} senao se (continuar == "2") {
           			escreva("O placar é:\n")
@@ -612,3 +628,15 @@ programa {
 	}
 	
 }
+
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 5229; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
